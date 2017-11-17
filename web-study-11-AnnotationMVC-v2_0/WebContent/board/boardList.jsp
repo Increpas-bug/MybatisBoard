@@ -7,7 +7,7 @@
 		<table class="list">
 			<tr>
 				<td colspan="5" style="border: white; text-align: right"><a
-					href="boardWriteForm.do">게시글 등록222/a></td>
+					href="boardWriteForm.do">게시글 등록 브런치 마스터</a></td>
 			</tr>
 			<tr id="listtitle">
 				<th>번호</th>
