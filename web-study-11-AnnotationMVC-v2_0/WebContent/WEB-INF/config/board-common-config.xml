@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<!-- 1. 스프링이 직접 CP 및 JNDI 참조
+		context.xml의 Resource name="jdbc/SpringDB" 일치시켜주는것이 중요 -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/SpringDB" />
+		<!-- default는 value="false" -->
+		<property name="resourceRef" value="true" />
+	</bean>
+	<!-- transactionManager 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 2. 스프링 - 마이바티스 - CP 및 JNDI 참조 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 스프링 설정 파일 경로(mybatis-config.xml) -->
+		<property name="configLocation" value="WEB-INF/config/mybatis-config.xml" />
+		<!-- SQL 매핑파일 = 매퍼 경로 -->
+		<property name="mapperLocations" value="classpath:sqlmap/*.xml" /><!-- SQL 매핑파일 = 매퍼 -->
+	</bean>
+	<!--3. SqlSessionFactoryBean을 주입시킨
+		SqlSessionTemplate(SqlSession을 스프링 Template으로 래핑(포장)) 빈등록 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 업로드파일 크기(바이트단위)제한 X -->
+		<property name="maxUploadSize" value="-1" />
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>
+	
+</beans>

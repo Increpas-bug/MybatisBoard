@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board_ns">
+	<!-- 디폴트 설정 mapper XML의 모든 select 결과 캐시 mapper XML의 insert, update, delete는 모두 캐시를 지움 -->
+	<!-- <cache/> -->
+	<!-- DB에 60초(단위는 ms) 간격으로 DBIO가 발생 (설정된 캐시를 얼마 동안 유지할지 설정)
+		FIFO 캐시 알고리즘 : 먼저 만들어진 캐시가 먼저 삭제
+		(기본은 가장 오랫동안 사용하지 않은 캐시를 지우는 알고리즘(LRU)) 
+		size : 캐시에 저장할 객체의 수 
+		readOnly : 캐시 데이터를 읽기만 가능하게 설정
+		캐시를 적용할 쿼리 속성에 useCache="true"를 추가 -->
+	<cache eviction="FIFO" flushInterval="60000" size="1024" readOnly="true" />
+
+	<!-- 필드속성과 컬럼명 일치하는 경우 컬럼명 생략 가능 순서를 컬럼순서대로 함 -->
+	<!-- type="Board"는 WEB-INF/config 아래 mybatis-config.xml에 typeAlias 설정 -->
+	<resultMap id="BoardResult" type="Board">
+		<result property="num" column="num" />
+		<result property="title" />
+		<result property="content" />
+		<result property="name" />
+		<result property="writedate" />
+		<result property="readcount" />
+		<result property="pass" />
+		<!-- <result property="bref" />
+		<result property="bstep" />
+		<result property="blevel" />
+		<result property="uploadPath" /> -->
+	</resultMap>
+	
+	<select id="selectAllBoards" parameterType="Map" resultMap="BoardResult">
+		SELECT num, name, email, pass, title, content, readcount, writedate
+		FROM board
+		ORDER BY num DESC
+	</select>
+
+</mapper>

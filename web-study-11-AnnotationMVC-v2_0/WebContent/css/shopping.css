@@ -1,0 +1,81 @@
+/* 추가된 부분 start */
+.error {
+	color: red; /* 에러메세지 글 색상 설정 */
+}
+
+/* 추가된 부분 end */
+/*  list */
+#listtitle {
+	/* 
+	width: 971px;  1024*768로 해상도를 맞추어서 설계
+	                         가운데 정렬을 위한 바깥쪽 여백 설정
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+ */
+	font-size: 15px;
+	font-weight:bold;
+	font-family: sans-serif;
+	text-align: center;
+	color: #0a46a0;
+	margin: 20px auto;
+}
+
+#wrap {
+	width: 900px; /*1024*768로 해상도를 맞추어서 설계 
+	                       가운데 정렬을 위한 바깥쪽 여백 설정 == 971px*/
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+/* 제목 */
+h1 {
+	font-size: 28px; /* 폰트 사이즈 */
+	font-family: sans-serif;
+	text-align: center;
+	color: #0d5cd5; /* 글 색상*/
+	border-style: solid;
+	border-width: 1px;
+	width: 90%;
+	padding: 40px;
+	margin: 20px auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px; /* 글꼴 크기 */
+	line-height: 24px; /* 줄 간격 */
+}
+
+table td, th {
+	border: #d3d3d3 solid 1px; /* 경계선 색상 스타일 굵기 */
+	padding: 5px; /* 안쪽 여백 */
+}
+
+th {
+	background: #B4E7FF; /* 배경색 */
+}
+
+img {
+	width: 220px; /* 이미지 너비(가로) */
+	height: 300px; /* 이미지 높이(세로) */
+}
+
+a {
+	text-decoration: none; /* 링크 밑줄 없애기 */
+	color: black; /* 글 색상 */
+}
+
+a:HOVER {
+	text-decoration: none; /* 밑줄 */
+	background-color: #B4E7FF; /* 글 배경 색상 */
+	color: #09afff;
+}
+
+.record {
+	text-align: center;
+}
+
