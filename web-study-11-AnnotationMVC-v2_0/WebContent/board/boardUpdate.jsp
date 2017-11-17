@@ -3,7 +3,7 @@
 <%@ include file="header.jsp" %>
 <!-- 게시글 수정폼 페이지 -->
 	<div id="wrap" align="center">
-		<h1>게시글 수정</h1>
+		<h1>게시글 수정오겹살</h1>
 		<form:form commandName="board" name="frm" method="post" action="boardUpdate.do">
 			<input type="hidden" name="num" value="${board.num}">
 			<table>
