@@ -23,23 +23,23 @@
 		<result property="writedate" />
 		<result property="readcount" />
 		<result property="pass" />
-		<!-- <result property="bref" />
+		<result property="bref" />
 		<result property="bstep" />
 		<result property="blevel" />
-		<result property="uploadPath" /> -->
+		<result property="uploadpath" />
 	</resultMap>
 	
 	<!-- 게시글 리스트 -->
 	<select id="selectAllBoards" parameterType="Map" resultMap="BoardResult">
-		SELECT num, name, email, pass, title, content, readcount, writedate
+		SELECT *
 		FROM board
 		ORDER BY num DESC
 	</select>
 
 	<!-- 게시글 등록 -->
 	<insert id="insertBoard">
-		INSERT INTO board(num, name, email, pass, title, content)
-		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content})
+		INSERT INTO board(num, name, email, pass, title, content, uploadpath)
+		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content}, #{uploadpath})
 	</insert>
 	
 	<!-- 조회수 증가 -->

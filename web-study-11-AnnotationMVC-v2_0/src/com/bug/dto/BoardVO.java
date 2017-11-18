@@ -21,6 +21,11 @@ public class BoardVO {
 	private String content;
 	private int readcount;
 	private Timestamp writedate;
+	// 추가되는 컬럼들
+	private int bref;
+	private int bstep;
+	private int blevel;
+	private String uploadpath;
 
 	public int getNum() {
 		return num;
@@ -86,10 +91,43 @@ public class BoardVO {
 		this.writedate = writedate;
 	}
 
+	public int getBref() {
+		return bref;
+	}
+
+	public void setBref(int bref) {
+		this.bref = bref;
+	}
+
+	public int getBstep() {
+		return bstep;
+	}
+
+	public void setBstep(int bstep) {
+		this.bstep = bstep;
+	}
+
+	public int getBlevel() {
+		return blevel;
+	}
+
+	public void setBlevel(int blevel) {
+		this.blevel = blevel;
+	}
+
+	public String getUploadpath() {
+		return uploadpath;
+	}
+
+	public void setUploadpath(String uploadpath) {
+		this.uploadpath = uploadpath;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [num=" + num + ", name=" + name + ", email=" + email + ", pass=" + pass + ", title=" + title
-				+ ", content=" + content + ", readcount=" + readcount + ", writedate=" + writedate + "]";
+				+ ", content=" + content + ", readcount=" + readcount + ", writedate=" + writedate + ", bref=" + bref
+				+ ", bstep=" + bstep + ", blevel=" + blevel + ", uploadpath=" + uploadpath + "]";
 	}
 
 }

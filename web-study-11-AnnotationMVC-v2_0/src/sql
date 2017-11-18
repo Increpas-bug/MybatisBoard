@@ -1,0 +1,29 @@
+
+-- 1) 삭제하고 생성하거나
+-- drop table board;
+-- 2) 컬럼추가하여 테스트하여도 무방
+-- alter table board add (bref number default 0);
+-- alter table board add (bstep number default 0);
+-- alter table board add (blevel number default 0);
+-- alter table board add (uploadpath VARCHAR2(100));
+
+--참조 원글(부모글)번호,
+--글 순번,
+--글 들여쓰기 수준,
+--scott/tiger" 
+CREATE TABLE board(
+    num NUMBER primary key,
+    title VARCHAR2(200),
+    content VARCHAR2(2000),
+    name VARCHAR2(100),
+    writedate date DEFAULT sysdate,
+    readcount NUMBER,
+    pass VARCHAR2(30),
+    bref NUMBER DEFAULT 0,
+    bstep NUMBER DEFAULT 0,
+    blevel NUMBER DEFAULT 0,
+    uploadpath VARCHAR2(100)
+);
+
+-- 글번호 SEQ
+CREATE SEQUENCE board_seq;
