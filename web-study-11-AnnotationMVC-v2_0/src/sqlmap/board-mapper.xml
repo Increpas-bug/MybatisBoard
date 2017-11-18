@@ -50,7 +50,7 @@
 	</update>
 	
 	<!-- num으로 게시글 조회 -->
-	<select id="selectOneBoardByNum">
+	<select id="selectOneBoardByNum" resultMap="BoardResult">
 		SELECT *
 		FROM board
 		WHERE num = #{num}

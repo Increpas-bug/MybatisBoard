@@ -10,6 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
 	<context:component-scan base-package="com" />
 	<!-- view-controller : 뷰로이동만 시켜주는 AC
 		 path : 요청명, view-name
