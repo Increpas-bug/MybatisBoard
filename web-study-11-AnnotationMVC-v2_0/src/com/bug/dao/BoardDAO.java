@@ -28,10 +28,6 @@ public class BoardDAO {
 	public void insert(BoardVO vo){
 		sqlSessionTemplate.insert("board_ns.insertBoard",vo);
 	}
-	// 조회수 증가
-	public void updateReadCount(String num) {
-		sqlSessionTemplate.update("board_ns.updateReadCount", num);
-	}
 
 /*
 	// 게시글 등록
