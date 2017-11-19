@@ -20,6 +20,7 @@ public class BoardViewService {
 		return dao.selectOneBoardByNum(num);
 	}
 
+	// 답글 등록
 	@Transactional
 	public void insertReplyBoard(BoardVO vo) {
 		dao.insertReplyBoard(vo);

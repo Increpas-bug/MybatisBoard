@@ -33,9 +33,8 @@
 						<img alt="첨부파일없음">
 					</c:when>
 					<c:otherwise>
-							<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
 						<a href="file_download.do?filename=${board.uploadpath}">
-							<button>다운로드테스트</button>
+							<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
 						</a>
 					</c:otherwise>
 				</c:choose>

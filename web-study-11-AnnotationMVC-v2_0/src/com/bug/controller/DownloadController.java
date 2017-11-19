@@ -27,7 +27,7 @@ public class DownloadController {
 			String upath = request.getServletContext().getRealPath("/upload");
 
 			try {
-				File file = new File(upath + filename);
+				File file = new File(upath + "/" + filename);
 				System.out.println(file.getName());
 				String filetype = filename.substring(filename.indexOf(".") + 1, filename.length());
 
