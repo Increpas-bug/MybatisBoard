@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bug.dao.BoardDAO;
 import com.bug.dto.BoardVO;
@@ -38,4 +39,10 @@ public class BoardService {
 		
 		return boardVOList;
 	}
+	// 게시글 등록 
+	@Transactional
+	public void insertBoard(BoardVO vo){
+		boardDAO.insert(vo);
+	}
+	
 }

@@ -24,6 +24,10 @@ public class BoardDAO {
 	public List<BoardVO> selectAllBoards() {
 		return sqlSessionTemplate.selectList("board_ns.selectAllBoards");
 	}
+	// 게시글 등록 
+	public void insert(BoardVO vo){
+		sqlSessionTemplate.insert("board_ns.insertBoard",vo);
+	}
 /*
 	// 게시글 등록
 	public void insertBoard(BoardVO bVo) {

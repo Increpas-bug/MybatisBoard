@@ -4,7 +4,7 @@
 <!-- 게시글 등록폼 페이지 -->
 	<div id="wrap" align="center">
 		<h1>게시글 등록</h1>
-		<form:form commandName="board" method="post" action="boardWrite.do">
+		<form:form commandName="board" method="post" action="boardWrite.do" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<th>작성자</th>
@@ -34,6 +34,10 @@
 				<tr>
 					<th>내용</th>
 					<td><textarea cols="70" rows="15" name="content"></textarea></td>
+				</tr>
+				<tr>
+					<th>첨부 파일</th>
+					<td><input type="file" name="mfile"></td>
 				</tr>
 			</table>
 			<br>

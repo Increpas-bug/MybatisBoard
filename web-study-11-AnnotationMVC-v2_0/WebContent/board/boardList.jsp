@@ -7,7 +7,7 @@
 		<table class="list">
 			<tr>
 				<td colspan="5" style="border: white; text-align: right"><a
-					href="boardWriteForm.do">게시글 등록 악플러 환영</a></td>
+					href="boardWriteForm.do">게시글 등록 </a></td>
 			</tr>
 			<tr id="listtitle">
 				<th>번호</th>
