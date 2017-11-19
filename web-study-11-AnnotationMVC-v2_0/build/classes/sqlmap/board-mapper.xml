@@ -23,7 +23,7 @@
 		<result property="writedate" column="writedate"/>
 		<result property="readcount" column="readcount"/>
 		<result property="pass" column="pass"/>
-		<result property="emial" column="email"/>
+		<result property="email" column="email"/>
 		<result property="bref" column="bref"/>
 		<result property="bstep" column="bstep"/>
 		<result property="blevel" column="blevel"/>
