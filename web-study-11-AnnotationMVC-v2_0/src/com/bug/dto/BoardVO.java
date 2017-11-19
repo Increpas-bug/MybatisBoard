@@ -3,6 +3,7 @@ package com.bug.dto;
 import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 	/*
@@ -26,6 +27,7 @@ public class BoardVO {
 	private int bstep;
 	private int blevel;
 	private String uploadpath;
+	private MultipartFile mfile; // 파일 속성
 
 	public int getNum() {
 		return num;
@@ -123,11 +125,19 @@ public class BoardVO {
 		this.uploadpath = uploadpath;
 	}
 
+	public MultipartFile getMfile() {
+		return mfile;
+	}
+
+	public void setMfile(MultipartFile mfile) {
+		this.mfile = mfile;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [num=" + num + ", name=" + name + ", email=" + email + ", pass=" + pass + ", title=" + title
 				+ ", content=" + content + ", readcount=" + readcount + ", writedate=" + writedate + ", bref=" + bref
-				+ ", bstep=" + bstep + ", blevel=" + blevel + ", uploadpath=" + uploadpath + "]";
+				+ ", bstep=" + bstep + ", blevel=" + blevel + ", uploadpath=" + uploadpath + ", mfile=" + mfile + "]";
 	}
 
 }

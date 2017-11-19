@@ -31,7 +31,7 @@
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" size="70" name="title"> * 필수
+						<input type="text" size="70" name="title" value="RE: ${board.title}"> * 필수
 						<form:errors path="title" cssClass="error"/>
 					</td>
 				</tr>

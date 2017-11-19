@@ -17,16 +17,17 @@
 	<!-- type="Board"는 WEB-INF/config 아래 mybatis-config.xml에 typeAlias 설정 -->
 	<resultMap id="BoardResult" type="Board">
 		<result property="num" column="num" />
-		<result property="title" />
-		<result property="content" />
-		<result property="name" />
-		<result property="writedate" />
-		<result property="readcount" />
-		<result property="pass" />
-		<result property="bref" />
-		<result property="bstep" />
-		<result property="blevel" />
-		<result property="uploadpath" />
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="name" column="name"/>
+		<result property="writedate" column="writedate"/>
+		<result property="readcount" column="readcount"/>
+		<result property="pass" column="pass"/>
+		<result property="emial" column="email"/>
+		<result property="bref" column="bref"/>
+		<result property="bstep" column="bstep"/>
+		<result property="blevel" column="blevel"/>
+		<result property="uploadpath" column="uploadpath"/>
 	</resultMap>
 	
 	<!-- 게시글 리스트 -->
@@ -69,4 +70,12 @@
 		WHERE num = #{num}
 	</delete>
 
+	<!-- 답글 등록 -->
+	<!-- 답글은 부모원글의 순번 +1, 부모원글의 들여쓰기 수준 +1 -->
+	<insert id="insertReplyBoard" parameterType="Board">
+		INSERT INTO board(num, title, content, name, writedate, readcount, pass
+                  , bref, bstep, blevel, uploadpath)
+		VALUES(board_seq.NEXTVAL, #{title}, #{content}, #{name}, SYSDATE, #{readcount}, #{pass}
+            , #{bref}, #{bstep}+1, #{blevel}+1, #{uploadpath})
+	</insert>
 </mapper>

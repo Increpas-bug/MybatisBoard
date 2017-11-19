@@ -32,7 +32,7 @@
 	<input type="button" value="게시글 리스트" onclick="location.href='boardList.do'"/>
 	<input type="button" value="게시글 등록" onclick="location.href='boardWriteForm.do'"/>
 	<!-- 답글기능 추가 -->
-	<input type="button" value="답글 등록" onclick="location.href='boardWriteReplyForm.do'"/>
+	<input type="button" value="답글 등록" onclick="location.href='boardWriteReplyForm.do?num=${board.num}'"/>
 	
 </div>
 

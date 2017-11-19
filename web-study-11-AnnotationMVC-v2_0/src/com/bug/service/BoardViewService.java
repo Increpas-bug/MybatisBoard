@@ -20,4 +20,8 @@ public class BoardViewService {
 		return dao.selectOneBoardByNum(num);
 	}
 
+	@Transactional
+	public void insertReplyBoard(BoardVO vo) {
+		dao.insertReplyBoard(vo);
+	}
 }

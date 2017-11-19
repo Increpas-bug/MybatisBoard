@@ -21,4 +21,9 @@ public class BoardViewDAO {
 	public void updateReadCount(String num) {
 		sqlSessionTemplate.update("board_ns.updateReadCount", num);
 	}
+	
+	// 답글 등록
+	public void insertReplyBoard(BoardVO vo) {
+		sqlSessionTemplate.insert("board_ns.insertReplyBoard", vo);
+	}
 }
