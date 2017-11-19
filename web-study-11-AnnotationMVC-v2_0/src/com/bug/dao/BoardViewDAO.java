@@ -24,6 +24,7 @@ public class BoardViewDAO {
 	
 	// 답글 등록
 	public void insertReplyBoard(BoardVO vo) {
+		sqlSessionTemplate.update("board_ns.replyUpdateBoard", vo);
 		sqlSessionTemplate.insert("board_ns.insertReplyBoard", vo);
 	}
 }

@@ -78,4 +78,12 @@
 		VALUES(board_seq.NEXTVAL, #{title}, #{content}, #{name}, SYSDATE, #{readcount}, #{pass}, #{email}
             , #{bref}, #{bstep}+1, #{blevel}+1, #{uploadpath})
 	</insert>
+	
+	<!-- 같은 참조번호 글그룹이면서 원글순번보다 큰 순번을 가지는 기존의 답글의 순번이 1증가 -->
+	<update id="replyUpdateBoard" parameterType="Board">
+		UPDATE board
+        SET bstep = bstep +1
+		WHERE bref = #{bref}
+        AND bstep > #{bstep}
+	</update>
 </mapper>
