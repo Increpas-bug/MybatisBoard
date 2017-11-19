@@ -7,7 +7,7 @@
 		<table class="list">
 			<tr>
 				<td colspan="5" style="border: white; text-align: right"><a
-					href="boardWriteForm.do">게시글 등록 악플러 환영!!!</a></td>
+					href="boardWriteForm.do?requestPageNum=${boardVOListView.requestPageNum}">게시글 등록 악플러 환영!!!</a></td>
 			</tr>
 			<tr id="listtitle">
 				<th>번호</th>
@@ -25,7 +25,7 @@
 						<!-- 답글이면 -를 추가 -->
 					<c:forEach begin="1" end="${board.blevel}">-</c:forEach>&gt;
 					</c:if>
-					<a href="boardView.do?num=${board.num}"><!-- 게시판 글 번호 넘기는 방식은 고민해보자 -->
+					<a href="boardView.do?num=${board.num}&requestPageNum=${boardVOListView.requestPageNum}">
 							${board.title } </a></td>
 					<td>${board.name}</td>
 					<td><fmt:formatDate value="${board.writedate }" /></td>
