@@ -30,7 +30,7 @@
 			<td colspan="3">
 				<c:choose>
 					<c:when test="${empty board.uploadpath}">
-						<img  alt="첨부파일없음">
+						<img alt="첨부파일없음">
 					</c:when>
 					<c:otherwise>
 						<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
