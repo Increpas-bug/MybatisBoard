@@ -73,9 +73,9 @@
 	<!-- 답글 등록 -->
 	<!-- 답글은 부모원글의 순번 +1, 부모원글의 들여쓰기 수준 +1 -->
 	<insert id="insertReplyBoard" parameterType="Board">
-		INSERT INTO board(num, title, content, name, writedate, readcount, pass
+		INSERT INTO board(num, title, content, name, writedate, readcount, pass, email
                   , bref, bstep, blevel, uploadpath)
-		VALUES(board_seq.NEXTVAL, #{title}, #{content}, #{name}, SYSDATE, #{readcount}, #{pass}
+		VALUES(board_seq.NEXTVAL, #{title}, #{content}, #{name}, SYSDATE, #{readcount}, #{pass}, #{email}
             , #{bref}, #{bstep}+1, #{blevel}+1, #{uploadpath})
 	</insert>
 </mapper>

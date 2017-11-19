@@ -1,5 +1,9 @@
 package com.bug.controller;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +33,28 @@ public class BoardWriteReplyController {
 	}
 
 	@RequestMapping(value = "boardWriteReply.do", method = RequestMethod.POST)
-	public String writeReply(@Valid @ModelAttribute("board") BoardVO boardVO) {
+	public String writeReply(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO boardVO) {
 		MultipartFile mfile = boardVO.getMfile();
 		boardVO.setUploadpath(mfile.getOriginalFilename());
 		service.insertReplyBoard(boardVO);
+		System.out.println("mfile = " + mfile); // 파일미선택도 객체 생성
 		
-		return "redirect:boardList.do";
+		if (mfile != null && mfile.getSize() != 0) {
+			String fileName = mfile.getOriginalFilename();
+			String upath = request.getServletContext().getRealPath("/upload");
+			System.out.println("upath = " + upath);
+			
+			File file = new File(upath + "/" + fileName); // File 객체 생성
+			try {
+				mfile.transferTo(file);
+			} catch (Exception e) {
+				return "boardWriteReply";
+			} // 파일로 복사
+			System.out.println(fileName + " upath에 저장");
+			System.out.println("파일크기 = " + mfile.getSize() + "바이트");
+		}
+		
+		return "redirect:boardList.do?pn=1";
 	}
 	// 답글 등록 end
 }
