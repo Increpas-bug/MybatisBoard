@@ -25,6 +25,19 @@
 			<th>내용</th>
 			<td colspan="3"><pre>${board.content}</pre></td>
 		</tr>
+		<tr>
+			<th>첨부파일</th>
+			<td colspan="3">
+				<c:choose>
+					<c:when test="${empty board.uploadpath}">
+						<img  alt="첨부파일없음">
+					</c:when>
+					<c:otherwise>
+						<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
 	</table>
 	<br/><br/>
 	<input type="button" value="게시글 수정" onclick="open_win('boardCheckPassForm.do?num=${board.num}', 'update')"/>
