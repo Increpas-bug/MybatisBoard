@@ -17,7 +17,7 @@ public class BoardViewController {
 
 	// 게시판 상세보기 start
 	@RequestMapping(value = "/boardView.do", method = RequestMethod.GET)
-	public String view(String num, Model model) {
+	public String view(String num, String requestPageNum, Model model) {
 		String view = "boardView";
 
 		System.out.println("BoardViewController view() >>>>>>>>>>");
@@ -26,6 +26,7 @@ public class BoardViewController {
 		System.out.println("<<<<<<<<<< BoardViewController view()");
 		
 		model.addAttribute("board", bVo); // model에 뷰에서 보여줄 값 담기
+		model.addAttribute("pn", requestPageNum);
 		
 		return view;
 	}

@@ -33,7 +33,10 @@
 						<img alt="첨부파일없음">
 					</c:when>
 					<c:otherwise>
-						<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
+							<img alt="image" src="<%=request.getContextPath()%>/upload/${board.uploadpath}" width="330px">
+						<a href="file_download.do?filename=${board.uploadpath}">
+							<button>다운로드테스트</button>
+						</a>
 					</c:otherwise>
 				</c:choose>
 			</td>
@@ -42,10 +45,10 @@
 	<br/><br/>
 	<input type="button" value="게시글 수정" onclick="open_win('boardCheckPassForm.do?num=${board.num}', 'update')"/>
 	<input type="button" value="게시글 삭제" onclick="open_win('boardCheckPassForm.do?num=${board.num}', 'delete')"/>
-	<input type="button" value="게시글 리스트" onclick="location.href='boardList.do'"/>
+	<input type="button" value="게시글 리스트" onclick="location.href='boardList.do?pn=${pn}'"/>
 	<input type="button" value="게시글 등록" onclick="location.href='boardWriteForm.do'"/>
 	<!-- 답글기능 추가 -->
-	<input type="button" value="답글 등록" onclick="location.href='boardWriteReplyForm.do?num=${board.num}'"/>
+	<input type="button" value="답글 등록" onclick="location.href='boardWriteReplyForm.do?num=${board.num}&pn=${pn}'"/>
 	
 </div>
 

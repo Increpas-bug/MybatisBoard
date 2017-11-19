@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bug.dto.BoardVO;
@@ -25,15 +26,16 @@ public class BoardWriteReplyController {
 	
 	// 답글 등록 start
 	@RequestMapping(value = "boardWriteReplyForm.do", method = RequestMethod.GET)
-	public String writeReplyForm(String num, Model model) {
+	public String writeReplyForm(String num, String pn, Model model) {
 		String view = "boardWriteReply";
 		BoardVO vo = service.selectOneBoardByNum(num);
 		model.addAttribute("board", vo);
+		model.addAttribute("pn", pn);
 		return view;
 	}
 
 	@RequestMapping(value = "boardWriteReply.do", method = RequestMethod.POST)
-	public String writeReply(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO boardVO) {
+	public String writeReply(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO boardVO, @RequestParam("pn") String pn) {
 		try {
 			MultipartFile mfile = boardVO.getMfile();
 			boardVO.setUploadpath(mfile.getOriginalFilename());
@@ -51,7 +53,7 @@ public class BoardWriteReplyController {
 				System.out.println("파일크기 = " + mfile.getSize() + "바이트");
 			}
 			
-			return "redirect:boardList.do?pn=1";
+			return "redirect:boardList.do?pn="+pn;
 		} catch (Exception e) {
 			return "boardWriteReply";
 		}
