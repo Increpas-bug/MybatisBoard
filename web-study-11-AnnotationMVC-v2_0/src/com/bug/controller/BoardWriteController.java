@@ -44,7 +44,7 @@ public class BoardWriteController {
 
 			if (mfile != null && mfile.getSize() != 0) {
 				String filename = mfile.getOriginalFilename(); // 업로드 파일명
-				// upload 폴더의 물리적인 폴더 경로 지정			
+				// upload 폴더의 물리적인 폴더 경로 지정 (물리경로 -> 알아서 잡아줌)			
 				/*String upath = "C:/myjava17gi/workspace_jh/web-study-11-AnnotationMVC-v2_0/WebContent/upload";*/
 				String upath = request.getServletContext().getRealPath("/upload");
 				System.out.println(upath + "경로 설정 완료");
