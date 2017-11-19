@@ -9,6 +9,7 @@
 			<input type="hidden" name="bref" value="${board.bref}">
 			<input type="hidden" name="bstep" value="${board.bstep}">
 			<input type="hidden" name="blevel" value="${board.blevel}">
+			<input type="hidden" name="titleBackup" value="${board.title}">
 			<input type="hidden" name="pn" value="${pn}">
 			<table>
 				<tr>

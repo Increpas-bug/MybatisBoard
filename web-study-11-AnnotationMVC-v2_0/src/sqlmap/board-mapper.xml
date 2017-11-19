@@ -54,8 +54,8 @@
 
 	<!-- 게시글 등록 -->
 	<insert id="insertBoard" parameterType="Board">
-		INSERT INTO board(num, name, email, pass, title, content, bref, uploadpath)
-		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content}, board_seq.currval, #{uploadpath})
+		INSERT INTO board(num, name, email, pass, title, content, bref, uploadpath, readcount)
+		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content}, board_seq.currval, #{uploadpath}, 0)
 	</insert>
 
 	<!-- 조회수 증가 -->

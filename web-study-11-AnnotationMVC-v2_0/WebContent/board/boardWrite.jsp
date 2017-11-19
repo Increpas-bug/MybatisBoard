@@ -5,6 +5,7 @@
 	<div id="wrap" align="center">
 		<h1>게시글 등록</h1>
 		<form:form commandName="board" method="post" action="boardWrite.do" enctype="multipart/form-data">
+		<input type="hidden" name="requestPageNum" value="${requestPageNum}">
 			<table>
 				<tr>
 					<th>작성자</th>
@@ -44,7 +45,7 @@
 			<br>
 			<input type="submit" value="등록"/>
 			<input type="reset" value="다시 작성" />
-			<input type="button" value="목록" onclick="location.href='boardList.do'" />
+			<input type="button" value="목록" onclick="location.href='boardList.do?pn=${requestPageNum}'" />
 		</form:form>
 	</div>
 

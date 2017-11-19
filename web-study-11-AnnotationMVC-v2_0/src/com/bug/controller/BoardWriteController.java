@@ -2,10 +2,15 @@ package com.bug.controller;
 
 import java.io.File;
 
+
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,12 +32,20 @@ public class BoardWriteController {
 	private BoardService boardService;
 
 	@RequestMapping(value="boardWriteForm.do", method = RequestMethod.GET)
-	public String form() {
+	public String form(String requestPageNum, Model model) {
+		model.addAttribute("requestPageNum", requestPageNum);
 		return "boardWrite";
 	}
 
 	@RequestMapping(value="boardWrite.do", method = RequestMethod.POST)
-	public String onSubmit(HttpServletRequest request, BoardVO bVo) {
+	public String onSubmit(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO bVo
+			, Errors errors, String requestPageNum, Model model) {
+		
+		if (errors.hasErrors()) {
+			model.addAttribute("requestPageNum", requestPageNum);
+			return "boardWrite";
+		}
+		
 		try {
 			// 파일 업로드
 			MultipartFile mfile = bVo.getMfile();

@@ -1,6 +1,7 @@
 package com.bug.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +37,20 @@ public class BoardWriteReplyController {
 	}
 
 	@RequestMapping(value = "boardWriteReply.do", method = RequestMethod.POST)
-	public String writeReply(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO boardVO, @RequestParam("pn") String pn) {
+	public String writeReply(HttpServletRequest request, @Valid @ModelAttribute("board") BoardVO boardVO
+			,Errors errors, @RequestParam("pn") String pn, String num, String bref, String bstep, String blevel
+			,String titleBackup, Model model) {
+		
+		if (errors.hasErrors()) {
+			model.addAttribute("num", num);
+			model.addAttribute("bref", bref);
+			model.addAttribute("bstep", bstep);
+			model.addAttribute("blevel", blevel);
+			model.addAttribute("pn", pn);
+			boardVO.setTitle(titleBackup);
+			return "boardWriteReply";
+		}
+		
 		try {
 			MultipartFile mfile = boardVO.getMfile();
 			boardVO.setUploadpath(mfile.getOriginalFilename());
