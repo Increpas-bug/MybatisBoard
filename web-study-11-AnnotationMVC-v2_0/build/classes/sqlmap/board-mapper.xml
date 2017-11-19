@@ -41,7 +41,7 @@
 	<!-- 게시글 리스트 -->
 	<select id="selectAllBoards" parameterType="Map" resultMap="BoardResult">
 		 select * from (select num, title, name, writedate, readcount, blevel, rownum rn from
-		 (select * from board order by bref desc, blevel asc, bstep desc))
+		 (select * from board order by bref desc, bstep asc))
 		 where rn between #{firstRow} and #{endRow}
 	</select>
 	
