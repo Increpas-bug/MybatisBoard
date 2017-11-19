@@ -53,11 +53,11 @@
 	
 
 	<!-- 게시글 등록 -->
-	<insert id="insertBoard">
-		INSERT INTO board(num, name, email, pass, title, content, uploadpath)
-		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content}, #{uploadpath})
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO board(num, name, email, pass, title, content, bref, uploadpath)
+		VALUES(board_seq.nextval, #{name}, #{email}, #{pass}, #{title}, #{content}, board_seq.currval, #{uploadpath})
 	</insert>
-	
+
 	<!-- 조회수 증가 -->
 	<update id="updateReadCount">
 		UPDATE board

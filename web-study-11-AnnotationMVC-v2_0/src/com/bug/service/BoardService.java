@@ -44,5 +44,11 @@ public class BoardService {
 	public void insertBoard(BoardVO vo){
 		boardDAO.insert(vo);
 	}
+	// 게시글 조회 및 조회수 증가
+	@Transactional
+	public void selectOneBoardByNum(String num) {
+		boardDAO.updateReadCount(num);
+		
+	}
 	
 }
