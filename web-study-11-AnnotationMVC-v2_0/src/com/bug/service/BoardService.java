@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bug.dao.BoardDAO;
 import com.bug.dto.BoardVO;
@@ -43,6 +44,20 @@ public class BoardService {
 	@Transactional
 	public void insertBoard(BoardVO vo){
 		boardDAO.insert(vo);
+	}
+	
+	// 게시글 조회 및 조회수 증가
+	@Transactional
+	public BoardVO selectOneBoardByNum(String num) {
+		return boardDAO.selectOneBoardByNum(num);
+	}
+	
+	// 게시글 삭제 
+	@Transactional
+	public void deleteBoard(String seq, String blevel) {
+		System.out.println("서비스다.");
+		
+		boardDAO.delete(Integer.parseInt(seq), Integer.parseInt(blevel));
 	}
 	
 	

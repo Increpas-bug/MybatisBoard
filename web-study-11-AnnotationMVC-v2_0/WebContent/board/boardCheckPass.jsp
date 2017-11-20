@@ -7,6 +7,8 @@
 		<form action="boardCheckPass.do" name="frm" method="get">
 			<input type="hidden" name="num" value="${param.num}">
 			<input type="hidden" name="pn" value="${param.pn}">
+			<input type="hidden" name="blevel" value="${param.blevel}">
+			
 			<table style="width: 64% ">
 				<tr>
 					<th>비밀번호</th>

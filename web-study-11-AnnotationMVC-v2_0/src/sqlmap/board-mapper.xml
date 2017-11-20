@@ -80,10 +80,22 @@
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="deleteBoard">
+<!--  	<delete id="deleteBoard">
 		DELETE board
 		WHERE num = #{num}
-	</delete>
+	</delete> -->
+ 	<delete id="deleteBoard" parameterType="Board">
+		delete from Board
+		where  
+		<choose>
+		<when test="blevel==0">
+		bref=#{num}
+		</when>
+		<otherwise>
+		num=#{num} 
+		</otherwise>
+		</choose> 
+	</delete> 
 
 	<!-- 답글 등록 -->
 	<!-- 답글은 부모원글의 순번 +1, 부모원글의 들여쓰기 수준 +1 -->

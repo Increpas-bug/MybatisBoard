@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.istack.internal.NotNull;
+
 public class BoardVO {
 	/*
 	 * @NotBlank(message = "NotBlank.board.name") -> message/messages.properties 에 정의된 값으로 에러메세지를 보여준다
@@ -25,7 +27,7 @@ public class BoardVO {
 	// 추가되는 컬럼들
 	private int bref;
 	private int bstep;
-	private int blevel;
+	@NotNull private int blevel;
 	private String uploadpath;
 	private MultipartFile mfile; // 파일 속성
 

@@ -43,7 +43,7 @@
 	</table>
 	<br/><br/>
 	<input type="button" value="게시글 수정" onclick="open_win('boardCheckPassForm.do?num=${board.num}&pn=${pn}', 'update')"/>
-	<input type="button" value="게시글 삭제" onclick="open_win('boardCheckPassForm.do?num=${board.num}', 'delete')"/>
+	<input type="button" value="게시글 삭제" onclick="open_win('boardCheckPassForm.do?num=${board.num}&pn=${pn}&blevel=${boardVO.blevel}', 'delete')"/>
 	<input type="button" value="게시글 리스트" onclick="location.href='boardList.do?pn=${pn}'"/>
 	<input type="button" value="게시글 등록" onclick="location.href='boardWriteForm.do'"/>
 	<!-- 답글기능 추가 -->

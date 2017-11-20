@@ -24,10 +24,28 @@ public class BoardDAO {
 	public List<BoardVO> selectAllBoards() {
 		return sqlSessionTemplate.selectList("board_ns.selectAllBoards");
 	}
+		
 	// 게시글 등록 
 	public void insert(BoardVO vo){
 		sqlSessionTemplate.insert("board_ns.insertBoard",vo);
 	}
+	
+	// 게시글 삭제 
+	public void delete(int num, int blevel) {
+		System.out.println("DAO 첫부분.");
+		BoardVO bVo = new BoardVO();
+		bVo.setNum(num);
+		bVo.setBlevel(blevel);
+		System.out.println("넘어가냐? DAO");
+		sqlSessionTemplate.delete("board_ns.deleteBoard", bVo);
+	}
+
+	// num으로 게시글 조회
+		public BoardVO selectOneBoardByNum(String num) {
+			return (BoardVO)sqlSessionTemplate.selectOne("board_ns.selectOneBoardByNum", num);
+		}
+	
+	
 
 /*
 	// 게시글 등록
