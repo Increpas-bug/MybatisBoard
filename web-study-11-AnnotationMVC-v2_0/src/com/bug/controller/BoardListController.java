@@ -31,6 +31,11 @@ public class BoardListController {
 		String view = "boardList";
 		
 		System.out.println("BoardController list() >>>>>>>>>>");
+
+		// 현재페이지를 받지 못한 경우 1페이지로
+		if (pn == null || pn.equals("")) {
+			pn = "1";
+		}
 		
 		BoardVOListModel boardVOListView = boardListService.list(pn);
 		

@@ -23,12 +23,12 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" maxlength="30" name="email"></td>
 				</tr>
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" size="70" name="title"> * 필수
+						<input type="text" size="70" maxlength="50" name="title"> * 필수
 						<form:errors path="title" cssClass="error"/>
 					</td>
 				</tr>
