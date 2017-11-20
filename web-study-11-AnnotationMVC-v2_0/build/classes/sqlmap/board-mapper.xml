@@ -100,5 +100,11 @@
         SET bstep = bstep +1
 		WHERE bref = #{bref}
         AND bstep > #{bstep}
+	</update>	
+	
+	<update id="updateBoard2" parameterType="Board">
+	update board set name=#{name}, email=#{email}, pass=#{pass}
+	, title=#{title}, content=#{content} where num=#{num}	
 	</update>
+	
 </mapper>
