@@ -13,7 +13,7 @@
 		</tr>
 		<tr>
 			<th>작성일</th>
-			<td><fmt:formatDate value="${board.writedate}" /></td>
+			<td><fmt:formatDate value="${board.writedate}" pattern="yyyy.MM.dd HH:mm:ss"/></td>
 			<th>조회수</th>
 			<td>${board.readcount}</td>
 		</tr>

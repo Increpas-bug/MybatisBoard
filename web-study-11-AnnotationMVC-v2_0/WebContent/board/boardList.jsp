@@ -21,20 +21,20 @@
 		<c:forEach var="board" items="${boardVOListView.boardVOList}">
 			<tr class="record">
 				<td>${board.num }</td>
-				<td><c:if test="${board.blevel > 0}">
+				<td style="text-align: left;padding-left:20px;"><c:if test="${board.blevel > 0}">
 						<!-- 답글이면 -를 추가 -->
 						<c:forEach begin="1" end="${board.blevel}">-</c:forEach>&gt;
 					</c:if> <a
 					href="boardView.do?num=${board.num}&requestPageNum=${boardVOListView.requestPageNum}">
 						${board.title } </a></td>
 				<td>${board.name}</td>
-				<td><fmt:formatDate value="${board.writedate }" /></td>
+				<td><fmt:formatDate value="${board.writedate }" pattern="yyyy.MM.dd HH:mm:ss"/></td>
 				<td>${board.readcount}</td>
 			</tr>
 		</c:forEach>
 		<tr>
 
-			<td colspan="5"><c:if
+			<td colspan="5" style="text-align: center;"><c:if
 					test="${boardVOListView.beginPageNum > 10}">
 					<a
 						href='<c:url value="/boardList.do?pn=${boardVOListView.beginPageNum-1}"/>'>이전</a>
