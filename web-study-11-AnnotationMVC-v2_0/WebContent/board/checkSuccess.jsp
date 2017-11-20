@@ -4,7 +4,7 @@
 <!-- 비밀번호 확인후 처리 페이지(화면 출력 X) -->
 	<script type="text/javascript">
 		if (window.name == "update") {
-			window.opener.parent.location.href = "boardUpdateForm.do?num=${param.num}";
+			window.opener.parent.location.href = "boardUpdateForm.do?num=${param.num}&pn=${param.pn}";
 		} else if (window.name == 'delete') {
 			alert('삭제되었습니다.');
 			window.opener.parent.location.href = "boardDelete.do?num=${param.num}";

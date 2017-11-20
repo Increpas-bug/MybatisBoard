@@ -24,7 +24,7 @@ public class BoardCheckPassController {
 		}
 
 		@RequestMapping(value = "/boardCheckPass.do", method = RequestMethod.GET)
-		public String checkPass(String num, String pass, Model model) {
+		public String checkPass(String num, String pass, String pn, Model model) {
 			String view = "checkSuccess";
 
 			System.out.println("BoardController checkPass() >>>>>>>>>>");
@@ -36,10 +36,11 @@ public class BoardCheckPassController {
 			// 비밀번호 일치 여부
 			boolean isPass = boardCheckPassService.isCheckPass(bVo, pass); // isCheckPass() : 일치하면 true, 불일치하면 false 리턴하는 메소드
 			if (!isPass) { // 불일치하면 메세지를 model에 담아 다시 비밀번호 확인 팝업 페이지로 이동
-				model.addAttribute("message", "비밀번호가 틀렸습니다.");
+				model.addAttribute("message", "비밀번호가 틀렸습니다.");	
+				model.addAttribute("pn", pn);
 				return "boardCheckPass";
-			}
-			
+			}			
+			model.addAttribute("pn", pn);
 			return view; // 일치시 성공처리 페이지로 이동
 		}
 		// 비밀번호 체크 end

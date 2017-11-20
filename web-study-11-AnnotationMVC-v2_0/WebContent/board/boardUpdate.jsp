@@ -6,6 +6,7 @@
 		<h1>게시글 수정오겹살</h1>
 		<form:form commandName="board" name="frm" method="post" action="boardUpdate.do">
 			<input type="hidden" name="num" value="${board.num}">
+			<input type="hidden" name="pn" value="${pn}">
 			<table>
 				<tr>
 					<th>작성자</th>
@@ -43,7 +44,7 @@
 			<br>
 			<input type="submit" value="등록">
 			<input type="reset" value="다시 작성">
-			<input type="button" value="목록" onclick="location.href='boardList.do'">
+			<input type="button" value="목록" onclick="location.href='boardList.do?pn=${pn}'">
 		</form:form>
 	</div>
 <%@ include file="footer.jsp" %>

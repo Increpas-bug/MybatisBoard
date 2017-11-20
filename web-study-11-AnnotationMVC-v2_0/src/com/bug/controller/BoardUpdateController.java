@@ -25,7 +25,7 @@ public class BoardUpdateController {
 	private BoardUpdateService boardUpdateService;
 	// 게시판 수정 start
 		@RequestMapping(value = "/boardUpdateForm.do", method = RequestMethod.GET)
-		public String updateForm(String num, Model model) {
+		public String updateForm(String num, String pn, Model model) {
 			String view = "boardUpdate";
 
 			System.out.println("BoardController updateForm() >>>>>>>>>>");
@@ -34,12 +34,12 @@ public class BoardUpdateController {
 			System.out.println("<<<<<<<<<< BoardController updateForm()");
 			
 			model.addAttribute("board", bVo); // model에 뷰에서 보여줄 값 담기
-			
+			model.addAttribute("pn", pn);
 			return view;
 		}
 		
 		@RequestMapping(value = "/boardUpdate.do", method = RequestMethod.POST)
-		public String update(@Valid @ModelAttribute("board") BoardVO bVo, Errors errors, Model model) {
+		public String update(@Valid @ModelAttribute("board") BoardVO bVo, Errors errors, String pn, Model model) {
 
 			System.out.println("BoardController update() >>>>>>>>>>");
 			System.out.println("error : " + errors.getAllErrors()); // 오류 정보 확인(디버그 코드)
@@ -53,7 +53,7 @@ public class BoardUpdateController {
 			
 			boardUpdateService.updateBoard(bVo); // 글수정
 			
-			return "redirect:boardView.do?num=" + bVo.getNum(); // 게시글 상세보기 페이지로 이동
+			return "redirect:boardView.do?num=" + bVo.getNum() + "&requestPageNum=" + pn; // 게시글 상세보기 페이지로 이동
 		}
 		// 게시판 수정 end
 

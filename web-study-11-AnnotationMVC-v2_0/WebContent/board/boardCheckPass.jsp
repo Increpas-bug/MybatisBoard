@@ -6,6 +6,7 @@
 		<h1 style="width: 200px ">비밀번호 확인</h1>
 		<form action="boardCheckPass.do" name="frm" method="get">
 			<input type="hidden" name="num" value="${param.num}">
+			<input type="hidden" name="pn" value="${param.pn}">
 			<table style="width: 64% ">
 				<tr>
 					<th>비밀번호</th>
