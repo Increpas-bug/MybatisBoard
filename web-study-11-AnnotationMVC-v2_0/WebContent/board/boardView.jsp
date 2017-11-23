@@ -3,8 +3,8 @@
 <%@ include file="header.jsp" %>
 <!-- 게시글 상세 페이지 -->
 <div id="wrap" align="center">
-	<h1>게시글 상세보기</h1>
-	<table>
+	<h1>게시글 심재현 뚝배기!</h1>
+	<table> 
 		<tr>
 			<th>작성자</th>
 			<td>${board.name}</td>
